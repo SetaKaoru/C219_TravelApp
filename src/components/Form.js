@@ -9,6 +9,7 @@ export default function Form({ handleAddItems }) {
         id: currentTime,
         description: description,
         quantity: quantity,
+        image: image,
         packed: false,
       };
       handleAddItems(newItem);
@@ -16,9 +17,14 @@ export default function Form({ handleAddItems }) {
   
     const [description, setDescription] = useState("");
     const [quantity, setQuantity] = useState(1);
+    const [image, setImage] = useState("Image (Link)");
   
     function handleDesc(em) {
       setDescription(em.target.value);
+    }
+
+    function handleImage(em) {
+      setImage(em.target.value);
     }
   
     function handleQuan(em) {
@@ -33,7 +39,10 @@ export default function Form({ handleAddItems }) {
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
+        <label for="item"> Name:</label>
         <input id="item" type="text" value={description} onChange={handleDesc} />
+        <label for="image">Image:</label>
+        <input id="image" type="text" value={image} onChange={handleImage} />
         <input type="submit" value="Add" />
       </form>
     );
